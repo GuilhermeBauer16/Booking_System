@@ -1,6 +1,6 @@
-package com.gitghub.guilhermeBauer16.BookingSystem.model;
+package com.gitghub.guilhermeBauer16.BookingSystem.vo.V1;
 
-import jakarta.persistence.*;
+import com.gitghub.guilhermeBauer16.BookingSystem.model.ServicesModel;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -8,18 +8,10 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
-@Entity
-@Table(name = "availabilities")
-public class AvailabilityModel implements Serializable {
+public class AvailabilityVO implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-
-    @ManyToOne
-    @JoinColumn(name = "service_id ")
     private ServicesModel servicesModel;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
@@ -27,7 +19,7 @@ public class AvailabilityModel implements Serializable {
 
     private Boolean isAvailable;
 
-    public AvailabilityModel() {
+    public AvailabilityVO() {
     }
 
     public UUID getId() {
@@ -82,7 +74,7 @@ public class AvailabilityModel implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AvailabilityModel that = (AvailabilityModel) o;
+        AvailabilityVO that = (AvailabilityVO) o;
         return Objects.equals(id, that.id) && Objects.equals(servicesModel, that.servicesModel) && Objects.equals(startTime, that.startTime) && Objects.equals(endTime, that.endTime) && Objects.equals(availableCapacity, that.availableCapacity) && Objects.equals(isAvailable, that.isAvailable);
     }
 

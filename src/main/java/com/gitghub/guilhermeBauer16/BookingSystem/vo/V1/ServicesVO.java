@@ -1,19 +1,16 @@
-package com.gitghub.guilhermeBauer16.BookingSystem.model;
+package com.gitghub.guilhermeBauer16.BookingSystem.vo.V1;
 
-import jakarta.persistence.*;
+import org.hibernate.boot.jaxb.hbm.internal.RepresentationModeConverter;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
-@Entity
-@Table(name = "services")
-public class ServicesModel implements Serializable {
 
+public class ServicesVO extends RepresentationModel<ServicesVO> implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String name;
     private String description;
@@ -21,11 +18,9 @@ public class ServicesModel implements Serializable {
     private Double price;
     private int capacity;
 
-    @Column(name = "is_available")
     private Boolean isAvailable;
 
-
-    public ServicesModel() {
+    public ServicesVO() {
     }
 
     public UUID getId() {
@@ -88,7 +83,7 @@ public class ServicesModel implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ServicesModel that = (ServicesModel) o;
+        ServicesVO that = (ServicesVO) o;
         return capacity == that.capacity && Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(description, that.description) && Objects.equals(type, that.type) && Objects.equals(price, that.price) && Objects.equals(isAvailable, that.isAvailable);
     }
 
