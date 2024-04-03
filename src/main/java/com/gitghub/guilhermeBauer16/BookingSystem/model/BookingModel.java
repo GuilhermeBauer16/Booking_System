@@ -22,13 +22,15 @@ public class BookingModel implements Serializable {
     @JoinColumn(name = "service_id " )
 
     private ServicesModel servicesModel;
-    private LocalDateTime dateTime;
-    private String status;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
+    private Integer availableCapacity;
     private String additionalInfo;
-
-    private Boolean isAvailable;
+    @Column(name = "is_available")
+    private Boolean available;
 
     public BookingModel() {
+        this.available = false;
     }
 
     public UUID getId() {
@@ -47,20 +49,28 @@ public class BookingModel implements Serializable {
         this.servicesModel = servicesModel;
     }
 
-    public LocalDateTime getDateTime() {
-        return dateTime;
+    public LocalDateTime getStartTime() {
+        return startTime;
     }
 
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
     }
 
-    public String getStatus() {
-        return status;
+    public LocalDateTime getEndTime() {
+        return endTime;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
+    }
+
+    public Integer getAvailableCapacity() {
+        return availableCapacity;
+    }
+
+    public void setAvailableCapacity(Integer availableCapacity) {
+        this.availableCapacity = availableCapacity;
     }
 
     public String getAdditionalInfo() {
@@ -72,11 +82,11 @@ public class BookingModel implements Serializable {
     }
 
     public Boolean getAvailable() {
-        return isAvailable;
+        return available;
     }
 
     public void setAvailable(Boolean available) {
-        isAvailable = available;
+        this.available = available;
     }
 
     @Override
@@ -84,11 +94,11 @@ public class BookingModel implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         BookingModel that = (BookingModel) o;
-        return Objects.equals(id, that.id) && Objects.equals(servicesModel, that.servicesModel) && Objects.equals(dateTime, that.dateTime) && Objects.equals(status, that.status) && Objects.equals(additionalInfo, that.additionalInfo) && Objects.equals(isAvailable, that.isAvailable);
+        return Objects.equals(id, that.id) && Objects.equals(servicesModel, that.servicesModel) && Objects.equals(startTime, that.startTime) && Objects.equals(endTime, that.endTime) && Objects.equals(availableCapacity, that.availableCapacity) && Objects.equals(additionalInfo, that.additionalInfo) && Objects.equals(available, that.available);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, servicesModel, dateTime, status, additionalInfo, isAvailable);
+        return Objects.hash(id, servicesModel, startTime, endTime, availableCapacity, additionalInfo, available);
     }
 }

@@ -1,6 +1,5 @@
 package com.gitghub.guilhermeBauer16.BookingSystem.vo.V1;
 
-import org.hibernate.boot.jaxb.hbm.internal.RepresentationModeConverter;
 import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serial;
@@ -18,9 +17,10 @@ public class ServicesVO extends RepresentationModel<ServicesVO> implements Seria
     private Double price;
     private int capacity;
 
-    private Boolean isAvailable;
+    private Boolean available;
 
     public ServicesVO() {
+        this.available = false;
     }
 
     public UUID getId() {
@@ -72,11 +72,11 @@ public class ServicesVO extends RepresentationModel<ServicesVO> implements Seria
     }
 
     public Boolean getAvailable() {
-        return isAvailable;
+        return available;
     }
 
     public void setAvailable(Boolean available) {
-        isAvailable = available;
+        this.available = available;
     }
 
     @Override
@@ -84,11 +84,11 @@ public class ServicesVO extends RepresentationModel<ServicesVO> implements Seria
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ServicesVO that = (ServicesVO) o;
-        return capacity == that.capacity && Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(description, that.description) && Objects.equals(type, that.type) && Objects.equals(price, that.price) && Objects.equals(isAvailable, that.isAvailable);
+        return capacity == that.capacity && Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(description, that.description) && Objects.equals(type, that.type) && Objects.equals(price, that.price) && Objects.equals(available, that.available);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, type, price, capacity, isAvailable);
+        return Objects.hash(id, name, description, type, price, capacity, available);
     }
 }

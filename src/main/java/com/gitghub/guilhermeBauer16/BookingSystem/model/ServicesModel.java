@@ -22,10 +22,11 @@ public class ServicesModel implements Serializable {
     private int capacity;
 
     @Column(name = "is_available")
-    private Boolean isAvailable;
+    private Boolean available ;
 
 
     public ServicesModel() {
+        this.available = false;
     }
 
     public UUID getId() {
@@ -77,11 +78,11 @@ public class ServicesModel implements Serializable {
     }
 
     public Boolean getAvailable() {
-        return isAvailable;
+        return available;
     }
 
     public void setAvailable(Boolean available) {
-        isAvailable = available;
+        this.available = available;
     }
 
     @Override
@@ -89,11 +90,11 @@ public class ServicesModel implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ServicesModel that = (ServicesModel) o;
-        return capacity == that.capacity && Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(description, that.description) && Objects.equals(type, that.type) && Objects.equals(price, that.price) && Objects.equals(isAvailable, that.isAvailable);
+        return capacity == that.capacity && Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(description, that.description) && Objects.equals(type, that.type) && Objects.equals(price, that.price) && Objects.equals(available, that.available);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, type, price, capacity, isAvailable);
+        return Objects.hash(id, name, description, type, price, capacity, available);
     }
 }
