@@ -22,10 +22,15 @@ public class BookingModel implements Serializable {
     @JoinColumn(name = "service_id " )
 
     private ServicesModel servicesModel;
+
     private LocalDateTime startTime;
+
     private LocalDateTime endTime;
+
     private Integer availableCapacity;
+
     private String additionalInfo;
+
     @Column(name = "is_available")
     private Boolean available;
 

@@ -17,7 +17,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/booking")
-public class BookingController implements ControllerDatabasesContract<BookingVO> {
+public class BookingController implements ControllerDatabasesContract<BookingVO,UUID> {
 
     @Autowired
     private BookingServices bookingServices;

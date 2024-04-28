@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.UUID;
 
-public interface ControllerDatabasesContract<T>{
+public interface ControllerDatabasesContract<T,I>{
 
     ResponseEntity<T> create(T t) throws Exception;
 
@@ -15,7 +15,7 @@ public interface ControllerDatabasesContract<T>{
 
     ResponseEntity<T> update(T t) throws Exception;
 
-    ResponseEntity<T> findById(UUID uuid) throws Exception;
+    ResponseEntity<T> findById(I i) throws Exception;
 
-    ResponseEntity<?> delete(UUID uuid) throws Exception;
+    ResponseEntity<?> delete(I i) throws Exception;
 }

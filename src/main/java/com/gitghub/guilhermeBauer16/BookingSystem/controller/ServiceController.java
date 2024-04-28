@@ -18,7 +18,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/services")
-public class ServiceController implements ControllerDatabasesContract<ServicesVO> {
+public class ServiceController implements ControllerDatabasesContract<ServicesVO,UUID> {
 
     @Autowired
     private ServiceServices serviceServices;

@@ -6,7 +6,7 @@ import org.springframework.hateoas.EntityModel;
 
 import java.util.UUID;
 
-public interface ServicesDatabaseContract<T> {
+public interface ServicesDatabaseContract<T,I> {
 
     T create(T t) throws Exception;
 
@@ -14,9 +14,9 @@ public interface ServicesDatabaseContract<T> {
 
     T update(T t) throws Exception;
 
-    T findById(UUID uuid) throws Exception;
+    T findById(I i) throws Exception;
 
-    void delete(UUID uuid) throws Exception;
+    void delete(I i) throws Exception;
 
 
 }

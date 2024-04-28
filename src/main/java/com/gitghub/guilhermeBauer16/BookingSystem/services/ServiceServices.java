@@ -25,7 +25,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @Service
-public class ServiceServices implements ServicesDatabaseContract<ServicesVO> {
+public class ServiceServices implements ServicesDatabaseContract<ServicesVO,UUID> {
     @Autowired
     private ServiceRepository serviceRepository;
 

@@ -29,7 +29,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @Service
-public class BookingServices implements ServicesDatabaseContract<BookingVO> {
+public class BookingServices implements ServicesDatabaseContract<BookingVO,UUID> {
 
     private static final String SERVICE_NOT_FOUND_MESSAGE = "No service was found for ID!";
     private static final String BOOKING_NOT_FOUND_MESSAGE = "No booking was found for ID!";
@@ -54,6 +54,7 @@ public class BookingServices implements ServicesDatabaseContract<BookingVO> {
         checkIfDayIsBeforeStartTime(bookingVO);
         checkIfActualDayIsBeforeEndTime(bookingVO);
         checkIfCapacityIsMoreThan0(bookingVO);
+        bookingVO.setAvailable(true);
         BookingModel entity = bookingModelMapper.parseObject(bookingVO);
         BookingVO vo = boikingVOMapper.parseObject(bookingRepository.save(entity));
         vo.add(linkTo(methodOn(BookingController.class).findById(bookingVO.getId())).withSelfRel());
